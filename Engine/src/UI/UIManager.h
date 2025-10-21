@@ -14,6 +14,7 @@ namespace IonixEngine
 		InputText,
 		Panel,
 		ColorPicker3,
+		ColorPicker4,
 	};
 	struct UIElement
 	{
@@ -65,6 +66,9 @@ namespace IonixEngine
 		void AddSliderFloat(int x, int y, float xSize, float ySize, const char* text, float* value, float min, float max);
 		
 		void AddInputText(int x, int y, float xSize, float ySize, const char* text, char* buffer, size_t bufferSize);
+
+		void AddColorPicker3(int x, int y, float xSize, float ySize, const char* label, float* color);
+		void AddColorPicker4(int x, int y, float xSize, float ySize, const char* label, float* color);
 		
 		void RenderUI();
 		

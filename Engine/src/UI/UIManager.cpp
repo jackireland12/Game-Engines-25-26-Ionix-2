@@ -74,6 +74,16 @@ void IonixEngine::UIManager::AddInputText(int x, int y, float xSize, float ySize
 	elements.push_back({ UIType::InputText,currentGroupName, x, y, xSize, ySize, const_cast<char*>(text), nullptr, nullptr, nullptr, 0.0f, 0.0f, buffer, bufferSize });
 }
 
+void IonixEngine::UIManager::AddColorPicker3(int x, int y, float xSize, float ySize, const char* label, float* color)
+{
+	elements.push_back({ UIType::ColorPicker3, currentGroupName, x, y, xSize, ySize,const_cast<char*>(label) });
+}
+
+void IonixEngine::UIManager::AddColorPicker4(int x, int y, float xSize, float ySize, const char* label, float* color)
+{
+	elements.push_back({ UIType::ColorPicker4, currentGroupName, x, y, xSize, ySize, const_cast<char*>(label) });
+}
+
 void IonixEngine::UIManager::RenderElement(UIElement& element)
 {
 	if (element.type == UIType::Panel)
@@ -111,6 +121,14 @@ void IonixEngine::UIManager::RenderElement(UIElement& element)
 	case UIType::InputText:
 		if (element.inputBuffer)
 			ImGui::InputText(element.text, element.inputBuffer, element.inputBufferSize);
+		break;
+	case UIType::ColorPicker3:
+		if (element.colorValue)
+			ImGui::ColorEdit3(element.text, element.colorValue);
+		break;
+	case UIType::ColorPicker4:
+		if (element.colorValue)
+			ImGui::ColorEdit4(element.text, element.colorValue);
 		break;
 	default:
 		break;
