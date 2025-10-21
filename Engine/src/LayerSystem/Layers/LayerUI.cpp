@@ -81,6 +81,7 @@ namespace IonixEngine
         
          //Shows the big ImGui demo window
          ImGui::ShowDemoWindow();
+         ImGui::SetCursorPos(ImVec2(150, 500));
          static float myColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f }; // RGBA red
          ImGui::Begin("Color Picker Test");
          ImGui::Text("Adjust UI Element Color");
