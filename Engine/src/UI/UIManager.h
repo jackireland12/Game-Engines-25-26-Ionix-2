@@ -13,6 +13,7 @@ namespace IonixEngine
 		SliderFloat,
 		InputText,
 		Panel,
+		ColorPicker3,
 	};
 	struct UIElement
 	{
@@ -30,7 +31,8 @@ namespace IonixEngine
 		float slidermax = 1.0f;// only for sliders
 		char* inputBuffer = nullptr; // only for input text
 		size_t inputBufferSize; // only for input text
-
+		float* colorValue = nullptr; // pointer to a float [3] colour picker
+		bool useAlpha = false; // colour picker
 		std::vector<UIElement> children;
 		bool isChildGroup = false;
 		
