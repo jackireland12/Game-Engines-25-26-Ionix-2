@@ -15,6 +15,7 @@ namespace IonixEngine
 		Panel,
 		ColorPicker3,
 		ColorPicker4,
+		RadioButton,
 	};
 	struct UIElement
 	{
@@ -34,6 +35,9 @@ namespace IonixEngine
 		size_t inputBufferSize; // only for input text
 		float* colorValue = nullptr; // pointer to a float [3] colour picker
 		bool useAlpha = false; // colour picker
+		int* radioValuePtr = nullptr;
+		int RadioButtonValue = 0;
+		bool sameline = false;
 		std::vector<UIElement> children;
 		bool isChildGroup = false;
 		
@@ -70,6 +74,8 @@ namespace IonixEngine
 		void AddColorPicker3(int x, int y, float xSize, float ySize, const char* label, float* color);
 		void AddColorPicker4(int x, int y, float xSize, float ySize, const char* label, float* color);
 		
+		void AddRadioButton(int x, int y, float xSize, float ySize, const char* text, int* radioValuePointer, int value, bool sameline);
+
 		void RenderUI();
 		
 	};

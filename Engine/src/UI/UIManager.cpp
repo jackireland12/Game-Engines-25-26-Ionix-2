@@ -83,6 +83,10 @@ void IonixEngine::UIManager::AddColorPicker4(int x, int y, float xSize, float yS
 {
 	elements.push_back({ UIType::ColorPicker4, currentGroupName, x, y, xSize, ySize, const_cast<char*>(label) });
 }
+void IonixEngine::UIManager::AddRadioButton(int x, int y, float xSize, float ySize, const char* text, int* radioValuePointer, int value, bool sameline)
+{
+	elements.push_back({ UIType::RadioButton,currentGroupName, x, y, xSize, ySize, const_cast<char*>(text), nullptr, nullptr, nullptr, 0.0f, 0.0f, nullptr, 0, radioValuePointer, value, sameline});
+}
 
 void IonixEngine::UIManager::RenderElement(UIElement& element)
 {
@@ -129,6 +133,14 @@ void IonixEngine::UIManager::RenderElement(UIElement& element)
 	case UIType::ColorPicker4:
 		if (element.colorValue)
 			ImGui::ColorEdit4(element.text, element.colorValue);
+	case UIType::RadioButton:
+		if (element.radioValuePtr)
+		{
+			if (ImGui::RadioButton(element.text, *element.radioValuePtr == element.RadioButtonValue))
+			{
+				*element.radioValuePtr = element.RadioButtonValue;
+			}
+		}
 		break;
 	default:
 		break;
