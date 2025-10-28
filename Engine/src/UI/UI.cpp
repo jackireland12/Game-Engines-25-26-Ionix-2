@@ -25,7 +25,7 @@ namespace IonixEngine
 	}
 	float UI::DrawColorPicker(int x, int y, float xSize, float ySize, const char* label, float* color)
 	{
-		ImGui::SetCursorPos(ImVec2(150, 500));
+		ImGui::SetCursorPos(ImVec2(x, y));
 		return *color;
 	}
 
