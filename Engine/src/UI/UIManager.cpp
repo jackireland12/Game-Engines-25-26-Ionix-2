@@ -165,7 +165,7 @@ void IonixEngine::UIManager::AddColorPicker(int x, int y, float xSize, float ySi
 	AddChildToPanel(element);
 }
 
-void IonixEngine::UIManager::AddDropdown(int x, int y, float xSize, float ySize, const char* text, std::vector<std::string> options, int* currentIndex)
+void IonixEngine::UIManager::AddDropdown(int x, int y, float xSize, float ySize, const char* text, std::vector<std::string> options, static int* currentIndex)
 {
 	UIElement element;
 	element.type = UIType::Dropdown;
@@ -175,7 +175,7 @@ void IonixEngine::UIManager::AddDropdown(int x, int y, float xSize, float ySize,
 	element.xSize = xSize;
 	element.ySize = ySize;
 	element.text = const_cast<char*>(text);
-	element.dropdownOptions = options;	
+	element.dropdownOptions = options;
 	element.dropdownCurrentIndex = currentIndex;
 
 	AddChildToPanel(element);
